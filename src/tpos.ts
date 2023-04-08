@@ -1,72 +1,58 @@
-import axios, { AxiosError, AxiosInstance } from 'axios';
+/* eslint-disable @typescript-eslint/naming-convention */
+import axios, { AxiosError, AxiosInstance } from 'axios'
+import { ILNBitsConfig } from './model'
 
-interface LNBitsConfig {
-  adminKey: string;
-  invoiceReadKey: string;
-  endpoint?: string;
-}
 
-interface TPoS {
-  currency: string;
-  id: string;
-  name: string;
-  wallet: string;
+
+interface ITPoS {
+	currency: string
+	id: string
+	name: string
+	wallet: string
 }
 
 export class LNBitsTPoSClass {
-  private adminKey = '';
-  private invoiceReadKey = '';
-  private endpoint = 'https://lnbits.com';
-  private api: AxiosInstance;
 
-  constructor(params: LNBitsConfig) {
-    this.adminKey = params.adminKey;
-    this.invoiceReadKey = params.invoiceReadKey;
-    this.endpoint = params.endpoint || this.endpoint;
-    this.api = axios.create({
-      baseURL: `${this.endpoint}/tpos/api/v1`,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+	constructor(params: ILNBitsConfig) {
+		this.adminKey = params.adminKey
+		this.invoiceReadKey = params.invoiceReadKey
+		this.endpoint = params.endpoint || this.endpoint
+		this.api = axios.create({
+			baseURL: `${this.endpoint}/tpos/api/v1`,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+	}
+	private adminKey = ''
+	private api: AxiosInstance
+	private endpoint = 'https://lnbits.com'
+	private invoiceReadKey = ''
 
-  getTPoS = async (): Promise<TPoS[]> => {
-    this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey;
-    return await this.api
-      .get(`/tposs`)
-      .then((res: { data: TPoS[] }) => {
-        return res.data;
-      })
-      .catch((err: AxiosError) => {
-        throw err;
-      });
-  };
+	createTPoS(params: {
+		currency: string;
+		name: string;
+	}): Promise<ITPoS> {
+		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
+		return this.api
+			.post<ITPoS>('/tposs', params)
+			.then(res => res.data)
+			.catch((err: AxiosError) => { throw err })
+	}
 
-  createTPoS = async (params: {
-    name: string;
-    currency: string;
-  }): Promise<TPoS> => {
-    this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey;
-    return await this.api
-      .post(`/tposs`, params)
-      .then((res: { data: TPoS }) => {
-        return res.data;
-      })
-      .catch((err: AxiosError) => {
-        throw err;
-      });
-  };
+	deleteTPoS(params: { tpos_id: string }): Promise<boolean>{
+		this.api.defaults.headers['X-Api-Key'] = this.adminKey
+		return this.api
+			.delete(`/tposs/${params.tpos_id}`)
+			.then(() => true)
+			.catch(() => false)
+	}
 
-  deleteTPoS = async (params: { tpos_id: string }): Promise<boolean> => {
-    this.api.defaults.headers['X-Api-Key'] = this.adminKey;
-    return await this.api
-      .delete(`/tposs/${params.tpos_id}`)
-      .then(() => {
-        return true;
-      })
-      .catch(() => {
-        return false;
-      });
-  };
+	getTPoS(): Promise<ITPoS[]> {
+		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
+		return this.api
+			.get<ITPoS[]>('/tposs')
+			.then(res => res.data)
+			.catch((err: AxiosError) => { throw err })
+	}
 }

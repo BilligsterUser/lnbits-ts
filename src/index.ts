@@ -1,32 +1,28 @@
-import { LNBitsWalletClass } from './wallet';
-import { LNBitsUserManagerClass } from './usermanager';
-import { LNBitsPaywallClass } from './paywall';
-import { LNBitsWithdrawClass } from './withdraw';
-import { LNBitsPaylinkClass } from './paylink';
-import { LNBitsTPoSClass } from './tpos';
+import { ILNBitsConfig } from './model'
+import { LNBitsPaylinkClass } from './paylink'
+import { LNBitsPaywallClass } from './paywall'
+import { LNBitsTPoSClass } from './tpos'
+import { LNBitsUserManagerClass } from './usermanager'
+import { LNBitsWalletClass } from './wallet'
+import { LNBitsWithdrawClass } from './withdraw'
 
-interface LNBitsConfig {
-  adminKey: string;
-  invoiceReadKey: string;
-  endpoint?: string;
-}
+
 
 export default (
-  params: LNBitsConfig
+	params: ILNBitsConfig
 ): {
-  wallet: LNBitsWalletClass;
-  userManager: LNBitsUserManagerClass;
-  paywall: LNBitsPaywallClass;
-  withdraw: LNBitsWithdrawClass;
-  paylink: LNBitsPaylinkClass;
-  tpos: LNBitsTPoSClass;
-} => {
-  return {
-    wallet: new LNBitsWalletClass(params),
-    userManager: new LNBitsUserManagerClass(params),
-    paywall: new LNBitsPaywallClass(params),
-    withdraw: new LNBitsWithdrawClass(params),
-    paylink: new LNBitsPaylinkClass(params),
-    tpos: new LNBitsTPoSClass(params),
-  };
-};
+	paylink: LNBitsPaylinkClass;
+	paywall: LNBitsPaywallClass;
+	tpos: LNBitsTPoSClass;
+	userManager: LNBitsUserManagerClass;
+	wallet: LNBitsWalletClass;
+	withdraw: LNBitsWithdrawClass;
+} =>
+	({
+		wallet: new LNBitsWalletClass(params),
+		userManager: new LNBitsUserManagerClass(params),
+		paywall: new LNBitsPaywallClass(params),
+		withdraw: new LNBitsWithdrawClass(params),
+		paylink: new LNBitsPaylinkClass(params),
+		tpos: new LNBitsTPoSClass(params),
+	})

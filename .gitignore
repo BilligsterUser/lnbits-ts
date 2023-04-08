@@ -1,4 +1,13 @@
-/node_modules
+.idea/
+.vscode/
+node_modules/
+dist/
+tmp/
+temp/
+*.log
+log/
+coverage/
 .env
-/lib
-debug.log
+.tscache
+sessions/
+certs/

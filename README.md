@@ -1,7 +1,6 @@
 # **LNBits JS API**
 
 [![npm version](https://img.shields.io/npm/v/lnbits-ts.svg?style=flat-square)](https://www.npmjs.org/package/lnbits-ts)
-[![Known Vulnerabilities](https://snyk.io/test/github.com/BilligsterUser/lnbits-ts/badge.svg?style=flat-square)](https://snyk.io/test/github.com/BilligsterUser/lnbits-ts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ---

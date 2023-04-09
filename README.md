@@ -20,7 +20,7 @@ Easy way to add LNBits API to your JS application.
 
 Help me to stack sats! :blush:
 
-[donate via Lightning Network!](lightning:billigsteruser@ln.tips)
+[donate via Lightning Network!](https://legend.lnbits.com/tipjar/939)
 
 ---
 

@@ -25,8 +25,8 @@ interface ILinks {
 export class LNBitsWithdrawClass {
 
 	constructor(params: ILNBitsConfig) {
-		this.adminKey = params.adminKey
-		this.invoiceReadKey = params.invoiceReadKey
+		this.adminKey = params?.adminKey ? params.adminKey : ''
+		this.invoiceReadKey = params?.invoiceReadKey ? params.invoiceReadKey : ''
 		this.endpoint = params.endpoint || this.endpoint
 		this.api = axios.create({
 			baseURL: `${this.endpoint}/withdraw/api/v1`,
@@ -37,7 +37,7 @@ export class LNBitsWithdrawClass {
 	}
 	private adminKey = ''
 	private api: AxiosInstance
-	private endpoint = 'https://lnbits.com'
+	private endpoint = 'https://legend.lnbits.com'
 	private invoiceReadKey = ''
 
 	createLink(params: {
@@ -55,7 +55,7 @@ export class LNBitsWithdrawClass {
 			.catch((err: AxiosError) => { throw err })
 	}
 
-	deleteLink (params: { withdraw_id: string }): Promise<boolean> {
+	deleteLink(params: { withdraw_id: string }): Promise<boolean> {
 		this.api.defaults.headers['X-Api-Key'] = this.adminKey
 		return this.api
 			.delete(`/links/${params.withdraw_id}`)
@@ -63,7 +63,7 @@ export class LNBitsWithdrawClass {
 			.catch(() => false)
 	}
 
-	getLinks(params?: { withdraw_id?: string }): Promise<ILinks[]>{
+	getLinks(params?: { withdraw_id?: string }): Promise<ILinks[]> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		let url = '/links'
 		if (params?.withdraw_id) {
@@ -83,7 +83,7 @@ export class LNBitsWithdrawClass {
 		uses: number;
 		wait_time: number;
 		withdraw_id: string;
-	}): Promise<ILinks>  {
+	}): Promise<ILinks> {
 		this.api.defaults.headers['X-Api-Key'] = this.adminKey
 		return this.api
 			.put<ILinks>(`/links/${params.withdraw_id}`, params)

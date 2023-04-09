@@ -14,8 +14,8 @@ interface ITPoS {
 export class LNBitsTPoSClass {
 
 	constructor(params: ILNBitsConfig) {
-		this.adminKey = params.adminKey
-		this.invoiceReadKey = params.invoiceReadKey
+		this.adminKey = params?.adminKey ? params.adminKey : ''
+		this.invoiceReadKey = params?.invoiceReadKey ? params.invoiceReadKey : ''
 		this.endpoint = params.endpoint || this.endpoint
 		this.api = axios.create({
 			baseURL: `${this.endpoint}/tpos/api/v1`,
@@ -26,7 +26,7 @@ export class LNBitsTPoSClass {
 	}
 	private adminKey = ''
 	private api: AxiosInstance
-	private endpoint = 'https://lnbits.com'
+	private endpoint = 'https://legend.lnbits.com'
 	private invoiceReadKey = ''
 
 	createTPoS(params: {
@@ -40,7 +40,7 @@ export class LNBitsTPoSClass {
 			.catch((err: AxiosError) => { throw err })
 	}
 
-	deleteTPoS(params: { tpos_id: string }): Promise<boolean>{
+	deleteTPoS(params: { tpos_id: string }): Promise<boolean> {
 		this.api.defaults.headers['X-Api-Key'] = this.adminKey
 		return this.api
 			.delete(`/tposs/${params.tpos_id}`)

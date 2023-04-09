@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios'
-import { ILNBitsConfig } from './model'
+import { ILNBitsConfig, WithRequiredProp } from './model'
 
 
 
@@ -14,8 +14,8 @@ interface Users {
 
 export class LNBitsUserManagerClass {
 
-	constructor(params: ILNBitsConfig) {
-		this.invoiceReadKey = params.invoiceReadKey
+	constructor(params: /* WithRequiredProp< */ILNBitsConfig/* , 'invoiceReadKey'> */) {
+		this.invoiceReadKey = params?.invoiceReadKey ? params.invoiceReadKey : ''
 		this.endpoint = params.endpoint || this.endpoint
 		this.api = axios.create({
 			baseURL: `${this.endpoint}/usermanager/api/v1`,
@@ -25,14 +25,14 @@ export class LNBitsUserManagerClass {
 		})
 	}
 	private api: AxiosInstance
-	private endpoint = 'https://lnbits.com'
+	private endpoint = 'https://legend.lnbits.com'
 	private invoiceReadKey = ''
 
 	activeExtension(params: {
 		active: boolean;
 		extension: string;
 		userid: string;
-	}): Promise<AxiosResponse>  {
+	}): Promise<AxiosResponse> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.post('/extensions', params)
@@ -61,10 +61,10 @@ export class LNBitsUserManagerClass {
 		return this.api
 			.post('/wallets/', params)
 			.then(res => res)
-			.catch((err: AxiosError) => {throw err })
+			.catch((err: AxiosError) => { throw err })
 	}
 
-	deleteUser(params: { user_id: string }): Promise<boolean>  {
+	deleteUser(params: { user_id: string }): Promise<boolean> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.delete(`/users/${params.user_id}`)
@@ -92,11 +92,11 @@ export class LNBitsUserManagerClass {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.get<Users[]>('/users')
-			.then(res  => res.data)
+			.then(res => res.data)
 			.catch((err: AxiosError) => { throw err })
 	}
 
-	getWallets(params?: { user_id?: string }): Promise<Users[]>{
+	getWallets(params?: { user_id?: string }): Promise<Users[]> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		let url = '/wallets'
 		if (params) {

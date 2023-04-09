@@ -40,8 +40,8 @@ interface IInvoiceCheck {
 export class LNBitsPaywallClass {
 
 	constructor(params: ILNBitsConfig) {
-		this.adminKey = params.adminKey
-		this.invoiceReadKey = params.invoiceReadKey
+		this.adminKey = params?.adminKey ? params.adminKey : ''
+		this.invoiceReadKey = params?.invoiceReadKey ? params.invoiceReadKey : ''
 		this.endpoint = params.endpoint || this.endpoint
 		this.api = axios.create({
 			baseURL: `${this.endpoint}/paywall/api/v1`,
@@ -52,7 +52,7 @@ export class LNBitsPaywallClass {
 	}
 	private adminKey = ''
 	private api: AxiosInstance
-	private endpoint = 'https://lnbits.com'
+	private endpoint = 'https://legend.lnbits.com'
 	private invoiceReadKey = ''
 
 	checkInvoice(params: {
@@ -83,7 +83,7 @@ export class LNBitsPaywallClass {
 		memo: string;
 		remembers: boolean;
 		url: string;
-	}): Promise<ICreatePaywall>  {
+	}): Promise<ICreatePaywall> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.post<ICreatePaywall>('/paywalls', params)
@@ -99,7 +99,7 @@ export class LNBitsPaywallClass {
 			.catch(() => false)
 	}
 
-	getPaywalls(): Promise<IPaywalls[]>  {
+	getPaywalls(): Promise<IPaywalls[]> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.get<IPaywalls[]>('/paywalls')

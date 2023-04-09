@@ -23,8 +23,8 @@ interface ILinks {
 export class LNBitsPaylinkClass {
 
 	constructor(params: ILNBitsConfig) {
-		this.adminKey = params.adminKey
-		this.invoiceReadKey = params.invoiceReadKey
+		this.adminKey = params?.adminKey ? params.adminKey :''
+		this.invoiceReadKey = params?.invoiceReadKey ? params.invoiceReadKey :''
 		this.endpoint = params.endpoint || this.endpoint
 		this.api = axios.create({
 			baseURL: `${this.endpoint}/lnurlp/api/v1`,
@@ -35,7 +35,7 @@ export class LNBitsPaylinkClass {
 	}
 	private adminKey = ''
 	private api: AxiosInstance
-	private endpoint = 'https://lnbits.com'
+	private endpoint = 'https://legend.lnbits.com'
 	private invoiceReadKey = ''
 
 	createPayLink(params: {
@@ -44,7 +44,7 @@ export class LNBitsPaylinkClass {
 		description: string;
 		max: number;
 		min: number;
-	}): Promise<ILinks>  {
+	}): Promise<ILinks> {
 		this.api.defaults.headers['X-Api-Key'] = this.adminKey
 		return this.api
 			.post<ILinks>('/links', params)
@@ -52,7 +52,7 @@ export class LNBitsPaylinkClass {
 			.catch((err: AxiosError) => { throw err })
 	}
 
-	deletePayLink (params: { pay_id: number }): Promise<boolean> {
+	deletePayLink(params: { pay_id: number }): Promise<boolean> {
 		this.api.defaults.headers['X-Api-Key'] = this.adminKey
 		return this.api
 			.delete(`/links/${params.pay_id}`)
@@ -60,7 +60,7 @@ export class LNBitsPaylinkClass {
 			.catch(() => false)
 	}
 
-	getLink (params: { pay_id: string }): Promise<ILinks> {
+	getLink(params: { pay_id: string }): Promise<ILinks> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.get<ILinks>(`/links/${params.pay_id}`)
@@ -68,7 +68,7 @@ export class LNBitsPaylinkClass {
 			.catch((err: AxiosError) => { throw err })
 	}
 
-	getLinks (): Promise<ILinks[]> {
+	getLinks(): Promise<ILinks[]> {
 		this.api.defaults.headers['X-Api-Key'] = this.invoiceReadKey
 		return this.api
 			.get<ILinks[]>('/links')

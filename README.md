@@ -28,7 +28,7 @@ Help me to stack sats! :blush:
 
 - [References](#references)
 - [Donate](#donate)
-- [Instalation](#installation)
+- [Installation](#installation)
 - [Usage](#usage)
   - [Initial Configuration](#initial-config)
   - [Wallet](#wallet)
@@ -69,13 +69,13 @@ Help me to stack sats! :blush:
 Using npm:
 
 ```bash
-$ npm install lnbits
+$ npm install lnbits-ts
 ```
 
 Using yarn:
 
 ```bash
-$ yarn add lnbits
+$ yarn add lnbits-ts
 ```
 
 ---

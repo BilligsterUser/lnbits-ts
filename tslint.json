@@ -1,8 +1,6 @@
 {
 	"defaultSeverity": "warn",
-	"extends": [
-		"tslint:recommended"
-	],
+	"extends": ["tslint:recommended"],
 	"jsRules": {
 		"no-unnecessary-callback-wrapper": true,
 		"explicit-module-boundary-types": [
@@ -27,10 +25,7 @@
 		],
 		"no-unused-expression": true,
 		"no-console": true,
-		"max-line-length": [
-			true,
-			180
-		],
+		"max-line-length": [true, 180],
 		"member-ordering": [
 			true,
 			{
@@ -51,45 +46,18 @@
 		"no-consecutive-blank-lines": false,
 		"object-literal-sort-keys": true,
 		"ordered-imports": true,
-		"quotemark": [
-			true,
-			"single"
-		],
-		"variable-name": [
-			true,
-			"allow-leading-underscore"
-		],
-		"linebreak-style": [
-			true,
-			"CRLF"
-		],
-		"semicolon": [
-			true,
-			"never"
-		],
+		"quotemark": [true, "single"],
+		"variable-name": [true, "allow-leading-underscore"],
+		"linebreak-style": [true, "CRLF"],
+		"semicolon": [true, "never"],
 		"curly": true,
 		"no-return-await": true,
 		"static-this": true,
-		"arrow-return-shorthand": [
-			true,
-			"multiline"
-		],
-		"one-line": [
-			true,
-			"check-catch",
-			"check-finally",
-			"check-else"
-		],
+		"arrow-return-shorthand": [true, "multiline"],
+		"one-line": [true, "check-catch", "check-finally", "check-else"],
 		"prefer-while": true,
-		"arrow-parens": [
-			true,
-			"ban-single-arg-parens"
-		],
-		"indent": [
-			true,
-			"tabs",
-			2
-		],
+		"arrow-parens": [true, "ban-single-arg-parens"],
+		"indent": [true, "tabs", 2],
 		"whitespace": [
 			true,
 			"check-branch",
@@ -118,10 +86,7 @@
 		],
 		"no-unused-expression": true,
 		"no-console": true,
-		"max-line-length": [
-			true,
-			180
-		],
+		"max-line-length": [true, 180],
 		"member-ordering": [
 			true,
 			{
@@ -142,35 +107,15 @@
 		"no-consecutive-blank-lines": false,
 		"object-literal-sort-keys": false,
 		"ordered-imports": true,
-		"quotemark": [
-			true,
-			"single"
-		],
-		"variable-name": [
-			true,
-			"allow-leading-underscore"
-		],
-		"linebreak-style": [
-			true,
-			"CRLF"
-		],
-		"semicolon": [
-			true,
-			"never"
-		],
+		"quotemark": [true, "single"],
+		"variable-name": [true, "allow-leading-underscore"],
+		"linebreak-style": [true, "CRLF"],
+		"semicolon": [true, "never"],
 		"curly": true,
 		"no-return-await": true,
 		"static-this": true,
-		"arrow-return-shorthand": [
-			true,
-			"multiline"
-		],
-		"one-line": [
-			true,
-			"check-catch",
-			"check-finally",
-			"check-else"
-		],
+		"arrow-return-shorthand": [true, "multiline"],
+		"one-line": [true, "check-catch", "check-finally", "check-else"],
 		"prefer-while": true,
 		"space-before-function-paren": [
 			true,
@@ -180,15 +125,8 @@
 				"asyncArrow": "never"
 			}
 		],
-		"arrow-parens": [
-			true,
-			"ban-single-arg-parens"
-		],
-		"indent": [
-			true,
-			"tabs",
-			2
-		],
+		"arrow-parens": [true, "ban-single-arg-parens"],
+		"indent": [true, "tabs", 2],
 		"whitespace": [
 			true,
 			"check-branch",

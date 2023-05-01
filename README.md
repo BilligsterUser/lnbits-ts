@@ -84,10 +84,10 @@ $ yarn add lnbits-ts
 
 ### **Initial Configuration**
 
-```javascript
-const LNBits = require("lnbits").default; // using require
+```typescript
+const LNBits = require("lnbits-ts").default; // using require
 
-import LNBits from "lnbits"; // using import
+import LNBits from "lnbits-ts"; // using import
 
 const { wallet, userManager, paywall, withdraw, paylink, tpos } = LNBits({
   adminKey: "d00265e7de5f44f59b2408d9f0564181",
@@ -104,7 +104,7 @@ const { wallet, userManager, paywall, withdraw, paylink, tpos } = LNBits({
 
 [ [Example](examples/wallet.ts) ] [ [top](#donate) ]
 
-```js
+```typescript
 const walletDetails = await wallet.walletDetails();
 console.log(walletDetails);
 ```
@@ -122,7 +122,7 @@ Parameters:
 - {string} params.memo
 - {boolean} params.out
 
-```js
+```typescript
 const newInvoice = await wallet.createInvoice({
   amount: 10,
   memo: "test",
@@ -143,7 +143,7 @@ Parameters:
 - {string} params.bolt11
 - {boolean} params.out
 
-```js
+```typescript
 const newPayInvoice = await wallet.payInvoice({
   bolt11: "",
   out: true,
@@ -162,7 +162,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.payment_hash
 
-```js
+```typescript
 const checkinvoice = await wallet.checkInvoice({
   payment_hash: "...",
 });
@@ -177,7 +177,7 @@ console.log(checkinvoice);
 
 [ [Example](examples/userManager.ts) ] [ [top](#donate) ]
 
-```js
+```typescript
 const users = await userManager.getUsers();
 console.log(users);
 ```
@@ -193,7 +193,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.user_id
 
-```js
+```typescript
 const wallets = await userManager.getWallets({
   user_id: "355c5110bed24744bebb12aecf8fad14",
 });
@@ -211,7 +211,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.wallet_id
 
-```js
+```typescript
 const tx = await userManager.getTransactions({
   wallet_id: "4a18ae4b204044069bd349a37ba0be1d",
 });
@@ -231,7 +231,7 @@ Parameters:
 - {string} params.user_name
 - {string} params.wallet_name
 
-```js
+```typescript
 const user = await userManager.createUser({
   admin_id: "355c5110bed24744bebb12aecf8fad14",
   user_name: "user",
@@ -251,7 +251,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.user_id
 
-```js
+```typescript
 const userDeleted = await userManager.deleteUser({
   user_id: "b7cab6e3744347f2b6516510f5d40e9d",
 });
@@ -269,7 +269,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.wallet_id
 
-```js
+```typescript
 const walletDeleted = await userManager.deleteWallet({
   wallet_id: "0d52c8a832f84f9b86bd993b985e6f10",
 });
@@ -289,7 +289,7 @@ Parameters:
 - {string} params.extension
 - {boolean} params.active
 
-```js
+```typescript
 const extension = await userManager.activeExtension({
   userid: "355c5110bed24744bebb12aecf8fad14",
   extension: "usermanager",
@@ -306,7 +306,7 @@ console.log(extension);
 
 [ [Example](examples/paywall.ts) ] [ [top](#donate) ]
 
-```js
+```typescript
 const paywalls = await paywall.getPaywalls();
 console.log(paywalls);
 ```
@@ -326,7 +326,7 @@ Parameters:
 - {boolean} params.remembers
 - {string} params.url
 
-```js
+```typescript
 const paywallNew = await paywall.createPaywall({
   amount: 10,
   description: "teste",
@@ -349,7 +349,7 @@ Parameters:
 - {number} params.amount
 - {string} params.paywall_id
 
-```js
+```typescript
 const invoice = await paywall.createInvoice({
   amount: 10,
   paywall_id: "3UWoiHV7SYCytUjMfG8ySq",
@@ -369,7 +369,7 @@ Parameters:
 - {string} params.paywall_id
 - {string} params.payment_hash
 
-```js
+```typescript
 const invoiceCheck = await paywall.checkInvoice({
   paywall_id: "3UWoiHV7SYCytUjMfG8ySq",
   payment_hash:
@@ -389,7 +389,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.paywall_id
 
-```js
+```typescript
 const paywallDeleted = await paywall.deletePaywall({
   paywall_id: "3UWoiHV7SYCytUjMfG8ySq",
 });
@@ -404,7 +404,7 @@ console.log(paywallDeleted);
 
 [ [Example](examples/withdraw.ts) ] [ [top](#donate) ]
 
-```js
+```typescript
 const withdrawLinks = await withdraw.getLinks({
   withdraw_id: "5o57EM9Qty5CLQB2QNjQ2p",
 });
@@ -427,7 +427,7 @@ Parameters:
 - {number} params.wait_time
 - {boolean} params.is_unique
 
-```js
+```typescript
 const link = await withdraw.createLink({
   title: "title",
   min_withdrawable: 10,
@@ -456,7 +456,7 @@ Parameters:
 - {number} params.wait_time
 - {boolean} params.is_unique
 
-```js
+```typescript
 const linkUpdated = await withdraw.updateLink({
   withdraw_id: "aaWVY3cu655xHxJpYLJhcA",
   title: "title",
@@ -480,7 +480,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.withdraw_id
 
-```js
+```typescript
 const linkDeleted = await withdraw.deleteLink({
   withdraw_id: "aaWVY3cu655xHxJpYLJhcA",
 });
@@ -495,7 +495,7 @@ console.log(linkDeleted);
 
 [ [Example](examples/tpos.ts) ] [ [top](#donate) ]
 
-```js
+```typescript
 const tposs = await tpos.getTPoS();
 console.log(tposs);
 ```
@@ -512,7 +512,7 @@ Parameters:
 - {string} params.currency
 - {string} params.name
 
-```js
+```typescript
 const tposNew = await tpos.createTPoS({
   currency: "usd",
   name: "teste tpos",
@@ -531,7 +531,7 @@ Parameters:
 - {Object} params - Params object.
 - {string} params.tpos_id
 
-```js
+```typescript
 const tposDeleted = await tpos.deleteTPoS({
   tpos_id: "PCXNcLsoLSaBhUybxHfoCN",
 });

@@ -55,78 +55,46 @@
 			"warn",
 			{
 				"selector": "variableLike",
-				"format": [
-					"camelCase"
-				]
+				"format": ["camelCase"]
 			},
 			{
 				"selector": "memberLike",
-				"format": [
-					"camelCase"
-				]
+				"format": ["camelCase"]
 			},
 			{
 				"selector": "variable",
-				"types": [
-					"boolean"
-				],
-				"format": [
-					"camelCase"
-				],
-				"prefix": [
-					"is",
-					"should",
-					"has",
-					"can",
-					"did",
-					"will"
-				]
+				"types": ["boolean"],
+				"format": ["camelCase"],
+				"prefix": ["is", "should", "has", "can", "did", "will"]
 			},
 			{
 				"selector": "typeParameter",
-				"format": [
-					"PascalCase"
-				],
-				"prefix": [
-					"T"
-				]
+				"format": ["PascalCase"],
+				"prefix": ["T"]
 			},
 			{
 				"selector": "default",
-				"format": [
-					"camelCase"
-				]
+				"format": ["camelCase"]
 			},
 			{
 				"selector": "variable",
-				"format": [
-					"camelCase",
-					"UPPER_CASE"
-				],
+				"format": ["camelCase", "UPPER_CASE"],
 				"leadingUnderscore": "allow"
 			},
 			{
 				"selector": "parameter",
-				"format": [
-					"camelCase"
-				],
+				"format": ["camelCase"],
 				"leadingUnderscore": "allow"
 			},
 			{
 				"selector": "memberLike",
-				"modifiers": [
-					"private"
-				],
-				"format": [
-					"camelCase"
-				],
+				"modifiers": ["private"],
+				"format": ["camelCase"],
 				"leadingUnderscore": "require"
 			},
 			{
 				"selector": "typeLike",
-				"format": [
-					"PascalCase"
-				]
+				"format": ["PascalCase"]
 			}
 		],
 		"new-cap": 1,
@@ -155,19 +123,13 @@
 		"no-return-await": "warn",
 		"no-prototype-builtins": "warn",
 		"no-empty": "warn",
-		"arrow-body-style": [
-			"warn",
-			"as-needed"
-		],
+		"arrow-body-style": ["warn", "as-needed"],
 		"no-useless-return": "warn",
 		"require-await": "warn",
 		"prefer-arrow-callback": "warn",
 		"no-var": "warn",
 		"no-fallthrough": "warn",
-		"no-extra-parens": [
-			"warn",
-			"functions"
-		],
+		"no-extra-parens": ["warn", "functions"],
 		"no-extra-semi": "warn",
 		"curly": "warn",
 		"eqeqeq": "warn",
@@ -189,20 +151,9 @@
 				"SwitchCase": 1
 			}
 		],
-		"linebreak-style": [
-			"warn",
-			"windows"
-		],
-		"quotes": [
-			"warn",
-			"single"
-		],
-		"semi": [
-			"warn",
-			"never"
-		]
+		"linebreak-style": ["warn", "windows"],
+		"quotes": ["warn", "single"],
+		"semi": ["warn", "never"]
 	},
-	"ignorePatterns": [
-		"dist"
-	]
+	"ignorePatterns": ["dist"]
 }

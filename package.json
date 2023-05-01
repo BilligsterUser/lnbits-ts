@@ -1,6 +1,6 @@
 {
 	"name": "lnbits-ts",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "NPM Package for LNBits.com API.",
 	"main": "dist/index.js",
 	"private": false,
@@ -29,7 +29,8 @@
 		"preversion": "npm run lint",
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags",
-		"pre-publish": "bash ./scripts/pre-publish.sh"
+		"pre-publish": "bash ./scripts/pre-publish.sh",
+		"clean": "(rm -rf dist || true) && (rm -rf coverage || true)"
 	},
 	"keywords": [
 		"bitcoin",

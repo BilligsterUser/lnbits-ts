@@ -40,7 +40,7 @@
 		"axios"
 	],
 	"dependencies": {
-		"axios": "^1.4.0"
+		"axios": "^1.6.4"
 	},
 	"devDependencies": {
 		"@getify/eslint-plugin-proper-arrows": "^11.0.3",
